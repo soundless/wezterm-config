@@ -68,6 +68,9 @@ wezterm.on("update-right-status", function(window, pane)
 	end;
 	window:set_right_status(wezterm.format(elements));
 end);
+function do_tables_match(a, b)
+	return table.concat(a) == table.concat(b);
+end;
 function shuffle(t)
 	local tbl = {};
 	for i = 1, #t do
@@ -82,23 +85,45 @@ function shuffle(t)
 	end;
 	return tbl;
 end;
-function do_tables_match(a, b)
-	return table.concat(a) == table.concat(b);
-end;
 return {
 	font = wezterm.font_with_fallback(shuffle({
 		"Recursive",
-		"Rec Mono Casual",
+	        "Rec Mono Casual",
 		"Rec Mono Duotone",
 		"Rec Mono Linear",
 		"Rec Mono Semicasual"
 	})),
-	font_size = 18,
-	color_scheme = (shuffle({
+	font_size = 18.6,
+	-- color_scheme = "AlienBlood",
+	-- color_scheme = "Batman",
+	-- color_scheme = "Espresso",
+	-- color_scheme = "Fideloper",
+	-- color_scheme = "Dracula+",
+	-- color_scheme = "ToyChest",
+	color_scheme = shuffle({
 		"AlienBlood",
-		"New Moon",
-    "Monokai Remastered"
-	}))[0],
+		"Galaxy",
+		"Batman",
+		"Espresso",
+		"Dracula",
+		"Dracula+",
+		"N0tch2k",
+		"Desert",
+		"darkmatrix",
+		"Ubuntu",
+		"UltraViolent",
+		"UltraDark",
+		"UnderTheSea",
+		"Urple",
+		"Grape",
+		"The Hulk",
+		"ToyChest",
+		"Zenburn",
+		"Seafoam Pastel",
+		"seoulbones_dark",
+		"Sublette",
+	})[1],
+	-- color_scheme = "Sublette",
 	exit_behavior = "Close",
 	keys = {
 		{
@@ -131,13 +156,11 @@ return {
 		top = 0,
 		bottom = 5
 	},
-	harfbuzz_features = {
-		"zero"
-	},
+	-- harfbuzz_features = {
+	--	"zero"
+	-- },
 	scrollback_lines = 1000000,
 	enable_tab_bar = true,
-	window_background_opacity = 1.0,
-	text_background_opacity = 1.0,
 	use_fancy_tab_bar = false,
-  term = "wezterm",
+	term = "wezterm"
 };
